@@ -9,8 +9,8 @@ var points = [];
 var numCpu = [];
 var punteggio = 0;
 contenitore.innerHTML += `<h1>Benvenuto! hai 30 secondi per memorizzare i seguenti numeri:</h1><div>${(randomGeneratorInt())}</div>`
-setTimeout(numberHide, 2000)
-setTimeout(getUserNum, 2200)
+setTimeout(numberHide, 29000)
+setTimeout(getUserNum, 30000)
 console.log(numCpu)
 console.log(points)
 
