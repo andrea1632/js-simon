@@ -5,17 +5,19 @@ Dopo che sono stati inseriti i 5 numeri, il software dice quanti e quali dei num
 */
 let contenitore = document.getElementById("contenitore");
 var userNum = [];
-contenitore.innerHTML += (randomGeneratorInt())
-setTimeout(getUserNum, 100);
-arrayCompare()
-console.log(userNum) 
-
+var points = [];
+var numCpu = [];
+var punteggio = 0;
+contenitore.innerHTML += `<h1>Benvenuto! hai 30 secondi per memorizzare i seguenti numeri:</h1><div>${(randomGeneratorInt())}</div>`
+setTimeout(numberHide, 2000)
+setTimeout(getUserNum, 2200)
+console.log(numCpu)
+console.log(points)
 
 
 
 //funzione per generare 5 numeri random
 function randomGeneratorInt (){
-    numCpu = [];
     for(i = 0; i < 5; i++){
         let randomNum = Math.floor(Math.random() * 100)
         numCpu.push(randomNum)
@@ -28,16 +30,26 @@ function getUserNum () {
         let numInput = parseInt(prompt(`inserisci il ${i +1}° numero`))
         userNum.push(numInput)
     }
-    console.log(userNum)
+    arrayCompare()    
     return userNum;
 }
 //funzione per determinare l'uguaglianza dei 2 array
 function arrayCompare () {
-    let points = [];
-    for ( y = 0; y <= numCpu.lenght; y++ ){
-        if (numCpu.includes (userNum[y])){
-            points.push(y)
+    for ( y = 0; y < 5; y++ ){
+        if (numCpu.includes(userNum[y])){
+            points.push(userNum[y])
+            punteggio++
         }
     }
+    result()
     return points;
+}
+
+function numberHide (){
+    contenitore.classList.add("dNone")
+}
+
+function result (){
+    contenitore.classList.remove("dNone")
+    contenitore.innerHTML = `i numeri indovinati sono :"${points}," i numeri da memorizzare erano : ${numCpu}, il tuo punteggio è ${punteggio}`
 }
